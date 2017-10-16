@@ -10,7 +10,8 @@ public class Application {
 		ApplicationContext appCtx = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		CustomerService customerService = appCtx.getBean("customerService", CustomerService.class);
-		
+		System.out.println(customerService);
+				
 		System.out.println(customerService.findAll().get(0).getFirstName() + " " + 
 				customerService.findAll().get(0).getLastName());
 	}

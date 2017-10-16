@@ -2,6 +2,8 @@ package io.sudheer.pluralsight.service;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Scope;
+
 import io.sudheer.pluralsight.model.Customer;
 import io.sudheer.pluralsight.repository.CustomerRepository;
 

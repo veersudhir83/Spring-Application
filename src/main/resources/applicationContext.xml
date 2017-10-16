@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context.xsd">
+						
+	<context:annotation-config/>			<!-- If we want to use annotation based -->			
+	<context:property-placeholder location="app.properties"/>
 
     <bean name="customerRepository" 
-          class="io.sudheer.pluralsight.repository.HibernateCustomerRepositoryImpl" />
+          class="io.sudheer.pluralsight.repository.HibernateCustomerRepositoryImpl">
+        <!-- If we want to use XML based -->  
+    	<!--  <property name="dbUserName" value="${dbUserName}"></property> --> 
+    </bean>
           
     <!-- Using Setter Injection -->      
     <!-- <bean name="customerService"
@@ -20,7 +30,9 @@
     
     <!-- Using Autowiring --> 
     <bean name="customerService"
-          class="io.sudheer.pluralsight.service.CustomerServiceImpl" autowire="constructor"> <!-- byType/byName -->
+          class="io.sudheer.pluralsight.service.CustomerServiceImpl" 
+          autowire="constructor" 
+          scope="singleton"> <!-- byType/byName -->
     </bean>
     
 </beans>
